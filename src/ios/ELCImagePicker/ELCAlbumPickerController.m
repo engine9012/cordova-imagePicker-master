@@ -26,7 +26,8 @@
 {
     [super viewDidLoad];
 	
-	[self.navigationItem setTitle:@"Loading..."];
+    // [self.navigationItem setTitle:@"Loading..."];
+	[self.navigationItem setTitle:@"加载中..."];
 
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self.parent action:@selector(cancelImagePicker)];
 	[self.navigationItem setRightBarButtonItem:cancelButton];
@@ -67,7 +68,8 @@
             // Group Enumerator Failure Block
             void (^assetGroupEnumberatorFailure)(NSError *) = ^(NSError *error) {
                 
-                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"相册错误: %@ - %@", [error localizedDescription], [error localizedRecoverySuggestion]] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                // UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"错误" message:[NSString stringWithFormat:@"相册错误: %@ - %@", [error localizedDescription], [error localizedRecoverySuggestion]] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"错误提示" message:[NSString stringWithFormat:@"相册错误: %@", [error localizedDescription]] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                 [alert show];
                 
                 NSLog(@"A problem occured %@", [error description]);	                                 
@@ -85,7 +87,8 @@
 - (void)reloadTableView
 {
 	[self.tableView reloadData];
-	[self.navigationItem setTitle:@"Select an Album"];
+    // [self.navigationItem setTitle:@"Select an Album"];
+	[self.navigationItem setTitle:@"选择相册"];
 }
 
 - (BOOL)shouldSelectAsset:(ELCAsset *)asset previousCount:(NSUInteger)previousCount
